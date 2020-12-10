@@ -42,9 +42,18 @@ function generatePassword() {
     // Ask if they want special characters
     var specialCharacters = confirm("Would you like special characters in your password?")
 
-
     //Ask how many characters in password (must be between 8 and 128)
     var numCharacters = prompt("How many characters should your password have? Choose a number between 8 and 128.")
+
+    // If user selects "no" for all character types, return an error messge
+    if (!lowerLetters && !upperLetters && !specialCharacters && !numbers) {
+      alert("Plese select at least one character type.")
+    }
+
+    // If user enters a number smaller than 8 or larger than 128, return an error message
+    if (numCharacters <8 || numCharacters >128) {
+      alert("Please enter a number between 8 and 128.")
+    }
 
     // If they want numbers, push numbers into the empty array
     if (numbers) {
@@ -73,15 +82,6 @@ function generatePassword() {
 
     } 
 
-    // If user selects "no" for all character types, return an error messge
-    if (!lowerLetters && !upperLetters && !specialCharacters && !numbers) {
-      alert("Plese select at least one character type.")
-    }
-
-    // If user enters a number smaller than 8 or larger than 128, return an error message
-    if (numCharacters <8 || numCharacters >128) {
-      alert("Please enter a number between 8 and 128.")
-    }
 
     //Returns password value
     return password; 
