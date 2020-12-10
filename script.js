@@ -48,13 +48,17 @@ function generatePassword() {
     // If user selects "no" for all character types, return an error messge
     if (!lowerLetters && !upperLetters && !specialCharacters && !numbers) {
       alert("Plese select at least one character type.")
+      return ""
     }
 
     // If user enters a number smaller than 8 or larger than 128, return an error message
-    if (numCharacters <8 || numCharacters >128) {
+    else if (numCharacters <8 || numCharacters >128) {
       alert("Please enter a number between 8 and 128.")
+      return ""
     }
 
+    // If the user did enter valid input for both criteria, run the code below to generate the password
+    else {
     // If they want numbers, push numbers into the empty array
     if (numbers) {
       Array.prototype.push.apply(charArr, numArr)
@@ -81,7 +85,7 @@ function generatePassword() {
         password += charArr[passwordIndex];
 
     } 
-
+  }
 
     //Returns password value
     return password; 
