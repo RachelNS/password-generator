@@ -1,6 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Creates an array of numbers
+var numArr = ("0123456789").split("")
+
+// Creates an array of lowercase letters
+var lowerCaseArr = ("abcdefghijklmnopqrstuvwxyz").split("");
+
+// Creates an array of uppercase letters
+var upperCaseArr = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").split("");
+
+//Creates an array of special characters
+var specialCharArr = ("~`!@#$%^&*()_-+={}[]<>,.?/").split("")
+
+
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -10,63 +24,53 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
 
-// TODO: Define lowercase letters
-// TODO: Define uppercase letters
-// TODO: Define random whole numbers 1-10
-// TODO: Define special characters
+function generatePassword() {
+  // Creates empty array to hold possible characters for password based on user responses
+  var charArr = [];
+  // Creates empty string to hold the password
+  var password = "";
+  
 
 
-// Take user input
   //Ask how many characters in password (must be between 8 and 128)
-  var numCharacters = prompt("How many characters should your password have?")
+  var numCharacters = prompt("How many characters should your password have? Choose a number between 8 and 128.")
   // TODO: If the number is too low, tell them it's too low. If the number is too high, tell them it's too high.
 
-  //Ask if they want numbers
-  var confirmNum = confirm("Would you like numbers in your password?")
-
-  //Ask if they want lowercase letters
-  var lowerCase = confirm("Would you like lowercase letters in your password?")
-  
-
   // Ask if they want uppercase letters
-  var upperCase = confirm("Would you like uppercase letters in your password?")
-  
-  
-  // Ask if they want special characters
-  var specialChar = confirm("Would you like special characters in your password?")
-  
+  //var upperCase = confirm("Would you like uppercase letters in your password?")
 
-// Run this function as many times as chracters the person wants in their passwrod
-for (i=0; i<= numCharacters; i++) {
-  // If yes to numbers, retrieve numbers
-  if (confirmNum) {
-    var num = Math.floor(Math.random() * 10);
-    writePassword(num);
+
+  // Ask if they want special characters
+  //var specialChar = confirm("Would you like special characters in your password?")
+  
+    //Ask if they want numbers
+    if (confirm("Would you like numbers in your password?")) {
+      // Push numbers into empty array
+      Array.prototype.push.apply(charArr, numArr)
+      console.log(charArr)
     }
 
-  //If yes to lowercase letters, retrieve lowercase letters
-  else if (lowerCase) {
-  var alphabet = ("abcdefghijklmnopqrstuvwxyz");
-  var randomLower = [Math.floor(Math.random() * alphabet.length)];
-  writePassword(randomLower);
-  }
+    //Ask if they want lowercase letters
+    if (confirm("Would you like lowercase letters in your password?")) {
+      //Push lowercase letters into empty array
+      Array.prototype.push.apply(charArr, lowerCaseArr)
+      console.log(charArr)
+    }
 
-  // If yes to uppercase letters, retrieve uppercase letters
-  else if (upperCase) {
-    var alpha2 = alphabet.toUpperCase;
-    var randomUpper = [Math.floor(Math.random () *alpha2.length)];
-    writePassword(randomUpper);
-  }
 
-  //If yes to special characters, retrieve special characters
-  else if (specialChar) {
-    var characters = ("~`!@#$%^&*()-_+={}[]|\/><,.")
-    var randomChar = [Math.floor(Math.random () *characters.length)];
-    writePassword(randomChar);
-  }
+      // Run this loop as many times as chracters the person wants in their passwrod
+      for (var i = 0; i < numCharacters; i++) {
+        console.log(typeof numCharacters)
+        var passwordIndex = Math.floor(Math.random() * charArr.length);
+        password += charArr[passwordIndex];
+        console.log(password)
 
+      }
+  
+    
+  
+  
 }
-
 
