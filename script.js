@@ -27,6 +27,7 @@ var specialCharArr = ("~`!@#$%^&*()_-+={}[]<>,.?/").split("")
 
 // Defines function to generate password
 function generatePassword() { 
+
     //Ask if they want numbers
     var numbers = confirm("Would you like numbers in your password?")
 
@@ -71,12 +72,22 @@ function generatePassword() {
         password += charArr[passwordIndex];
 
     } 
-  // writePassword();
-  console.log(password);
-  
+
+    // If user selects "no" for all character types, return an error messge
+    if (!lowerLetters && !upperLetters && !specialCharacters && !numbers) {
+      alert("Plese select at least one character type.")
+    }
+
+    // If user enters a number smaller than 8 or larger than 128, return an error message
+    if (numCharacters <8 || numCharacters >128) {
+      alert("Please enter a number between 8 and 128.")
+    }
+
+    //Returns password value
+    return password; 
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
 
 
