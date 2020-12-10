@@ -28,32 +28,42 @@ var specialCharArr = ("~`!@#$%^&*()_-+={}[]<>,.?/").split("")
 // Defines function to generate password
 function generatePassword() { 
     //Ask if they want numbers
-    if (confirm("Would you like numbers in your password?")) {
-      // Push numbers into empty array
-      Array.prototype.push.apply(charArr, numArr)
-    }
+    var numbers = confirm("Would you like numbers in your password?")
 
     //Ask if they want lowercase letters
-    if (confirm("Would you like lowercase letters in your password?")) {
-      //Push lowercase letters into empty array
-      Array.prototype.push.apply(charArr, lowerCaseArr)
-    }
+    var lowerLetters = confirm("Would you like lowercase letters in your password?")
+
 
     // Ask if they want uppercase letters
-    if (confirm("Would you like uppercase letters in your password?")) {
-    // Push uppercase letters into empty array
-    Array.prototype.push.apply(charArr, upperCaseArr);
-    }
+    var upperLetters = confirm("Would you like uppercase letters in your password?")
+
 
     // Ask if they want special characters
-    if (confirm("Would you like special characters in your password")) {
-    // Push special characters into empty array
-    Array.prototype.push.apply(charArr, specialCharArr);
-    }
+    var specialCharacters = confirm("Would you like special characters in your password?")
+
 
     //Ask how many characters in password (must be between 8 and 128)
     var numCharacters = prompt("How many characters should your password have? Choose a number between 8 and 128.")
 
+    // If they want numbers, push numbers into the empty array
+    if (numbers) {
+      Array.prototype.push.apply(charArr, numArr)
+    }
+
+    // If they want lowercase letters, push lowercase letters into empty array
+    if (lowerLetters) {
+      Array.prototype.push.apply(charArr, lowerCaseArr)
+    }
+
+    // If they want upperccase letters, push uppercase letters into empty array
+    if (upperLetters) {
+      Array.prototype.push.apply(charArr, upperCaseArr);
+      }
+    
+      // If they want special characters, push special characters into empty array
+    if (specialCharacters) {
+      Array.prototype.push.apply(charArr, specialCharArr);
+        }  
 
     // Run this loop as many times as chracters the person wants in their passwrod
     for (var i = 0; i < numCharacters; i++) {
@@ -61,14 +71,8 @@ function generatePassword() {
         password += charArr[passwordIndex];
 
     } 
-
-    console.log (password);
-    writePassword();
-  
-
-  
-
-    // TODO: If they said no to everything, prompt them to select at least one option
+  // writePassword();
+  console.log(password);
   
 }
 
